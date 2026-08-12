@@ -614,7 +614,7 @@ Completed evidence:
 
 ### Phase 6B — Add C# / .NET
 
-Status: first workflow implemented; CI verification pending.
+Status: first workflow complete.
 
 The public `tracezilla-shopify-dotnet` repository completes the initial
 Hello World platform set. It is a .NET 8 console application using built-in
@@ -630,6 +630,8 @@ Completed evidence:
   Python, and Ruby against the configured test accounts.
 - The canonical workflow documentation links to the .NET repository and Docker
   command.
+- GitHub Actions run `31603443208` restored locked dependencies, compiled with
+  warnings as errors, and passed all tests from a clean checkout.
 
 ## 10. Phase 7 — Decide the Make.com artifact boundary
 
