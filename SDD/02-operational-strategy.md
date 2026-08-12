@@ -91,7 +91,7 @@ created only when their first tested workflow is ready.
 | Step 3.3 — Shopify content | In progress | Setup and connection validation are migrated; workflow groups remain |
 | Step 3.4 — Migration inventory | Not started | Legacy-to-canonical destination map remains to be written |
 | Phase 4 — Shopify PHP | In progress | Framework-neutral Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
-| Phase 5 — Shopify TypeScript | Repository ready | Public repository exists and is registered in the umbrella workspace; implementation has not started |
+| Phase 5 — Shopify TypeScript | First workflow complete | Dockerized Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
 | Phases 6–7, 9–10 | Not started | No Python or WooCommerce implementation repositories have been created |
 | Phase 8 | In progress | Legacy Laravel baseline runs with `.env` credentials; connection tools are retained and the first preview/confirmed-write SKU workflow is implemented |
 
@@ -493,7 +493,10 @@ Completed for Compare Catalogs:
 
 ## 8. Phase 5 — Extract TypeScript
 
-Owner checkpoint: create `tracezilla-shopify-typescript`.
+Status: first workflow implemented; CI verification pending.
+
+Owner checkpoint complete: `tracezilla-shopify-typescript` is public and
+registered in the umbrella workspace.
 
 ### Step 5.1 — Establish independent history and runtime
 
@@ -516,6 +519,17 @@ Verification:
 
 Git checkpoint: initial repository push.
 
+Completed evidence:
+
+- Framework-neutral TypeScript mirrors the PHP query, client, catalog service,
+  mapper, workflow, and output boundaries.
+- The Docker image contains Node.js and locked dependencies; no host Node.js
+  installation is required.
+- Strict type checking passes, six tests pass, and `npm audit` reports no known
+  vulnerabilities.
+- A live read-only run produced the same comparison counts as PHP against the
+  configured test accounts.
+
 ### Step 5.2 — Link the canonical TypeScript implementation
 
 Outcome: the new repository becomes the maintained TypeScript implementation.
@@ -531,6 +545,11 @@ Verification:
 
 Git checkpoint: documentation link pull request. The embedded legacy copy
 remains unchanged and is not maintained.
+
+Completed for Compare Catalogs:
+
+- Shopify coverage identifies TypeScript as maintained for this workflow.
+- The canonical workflow page links to the repository and Docker command.
 
 ## 9. Phase 6 — Extract Python
 
