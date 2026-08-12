@@ -94,6 +94,7 @@ created only when their first tested workflow is ready.
 | Phase 5 — Shopify TypeScript | First workflow complete | Dockerized Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
 | Phase 6 — Shopify Python | First workflow complete | Dockerized Compare Catalogs CLI is implemented, typed, tested, and verified read-only against configured APIs |
 | Phase 6A — Shopify Ruby | First workflow complete | Dockerized Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
+| Phase 6B — Shopify .NET | First workflow complete | Dockerized Compare Catalogs console app is implemented, tested, and verified read-only against configured APIs |
 | Phases 7, 9–10 | Not started | Make.com remains deferred and no WooCommerce implementation repositories have been created |
 | Phase 8 | In progress | Legacy Laravel baseline runs with `.env` credentials; connection tools are retained and the first preview/confirmed-write SKU workflow is implemented |
 
@@ -610,6 +611,25 @@ Completed evidence:
   command.
 - GitHub Actions run `31602351833` installed the locked gems and passed the
   complete test suite and CLI syntax check from a clean checkout.
+
+### Phase 6B — Add C# / .NET
+
+Status: first workflow implemented; CI verification pending.
+
+The public `tracezilla-shopify-dotnet` repository completes the initial
+Hello World platform set. It is a .NET 8 console application using built-in
+HTTP and JSON support, nullable analysis, warnings as errors, locked NuGet
+dependencies, and Docker without ASP.NET.
+
+Completed evidence:
+
+- Query, client, catalog service, mapper, workflow, and output boundaries match
+  the other maintained platforms.
+- Three automated tests pass in the Docker image.
+- A live read-only run produced the same comparison counts as PHP, TypeScript,
+  Python, and Ruby against the configured test accounts.
+- The canonical workflow documentation links to the .NET repository and Docker
+  command.
 
 ## 10. Phase 7 — Decide the Make.com artifact boundary
 

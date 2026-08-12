@@ -16,3 +16,6 @@
 [submodule "tracezilla-shopify-ruby"]
 	path = tracezilla-shopify-ruby
 	url = https://github.com/Happy-Bananas/tracezilla-shopify-ruby.git
+[submodule "tracezilla-shopify-dotnet"]
+	path = tracezilla-shopify-dotnet
+	url = https://github.com/Happy-Bananas/tracezilla-shopify-dotnet.git
