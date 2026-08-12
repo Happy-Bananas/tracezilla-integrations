@@ -84,7 +84,7 @@ created only when their first tested workflow is ready.
 | Phase 1 — Freeze legacy repository | Complete | Legacy repository remains unchanged and is used only as a read-only source |
 | Step 2.0 — Local workspace | Complete | Parent README maps the independent repositories, SDD, working agreements, and common local commands |
 | Step 2.1 — Documentation scaffold | Complete | Independent Docker/Jekyll site returns HTTP 200 on `localhost:4000` |
-| Step 2.2 — Automated checks | In progress | GitHub Actions builds the site; dedicated internal-link validation remains |
+| Step 2.2 — Automated checks | Complete | GitHub Actions blocks deployment when the Jekyll build or internal-link validation fails |
 | Step 2.3 — GitHub Pages | Complete | Public site returns HTTP 200 |
 | Step 3.1 — Navigation skeleton | Complete | Service-first navigation and planned placeholders are rendered |
 | Step 3.2 — tracezilla fundamentals | Complete | Account, authentication, validation, entities, pagination, mapping, results, and safety are documented |
@@ -205,7 +205,7 @@ Completed evidence:
 
 ### Step 2.2 — Add automated documentation checks
 
-Status: In progress.
+Status: Complete.
 
 Outcome: broken builds and links are detected before publication.
 
@@ -221,15 +221,19 @@ deliberately broken test branch or local fixture.
 
 Git checkpoint: documentation CI pull request.
 
-Completed so far:
+Completed evidence:
 
 - Pushes to `main` run a production Jekyll build.
 - The Ruby version and gem dependencies are pinned.
-
-Remaining:
-
-- Add an explicit internal-link validation step.
-- Verify that a deliberately broken internal link fails the check.
+- HTMLProofer 5.2.0 checks generated pages, internal links, anchors, images,
+  and scripts before the deployment step can run.
+- External requests are disabled so third-party outages do not block a release;
+  localhost HTTP links remain valid for local workbench instructions.
+- The complete production site passes locally.
+- A temporary fixture linking to a missing page failed locally with exit code 1
+  and identified the missing target.
+- GitHub Actions run `31590578911` passed both the internal-link check and Pages
+  deployment on `main`.
 
 ### Step 2.3 — Add GitHub Pages deployment
 
@@ -751,14 +755,12 @@ Next execution sequence:
 
 1. Manually verify the documented workbench SKU-import pilot, including its
    demonstration mapping and write-safety boundary.
-2. Add internal-link validation to documentation CI and prove it detects a
-   broken link.
-3. Create the legacy-to-canonical documentation destination map.
-4. Define and populate the focused Shopify Laravel repository using only the
+2. Create the legacy-to-canonical documentation destination map.
+3. Define and populate the focused Shopify Laravel repository using only the
    selected maintained implementation code.
-5. Migrate the Shopify catalog comparison workflow as the first complete
+4. Migrate the Shopify catalog comparison workflow as the first complete
    workflow/implementation navigation pilot.
-6. Review the rendered site before migrating inventory and order workflows or
+5. Review the rendered site before migrating inventory and order workflows or
    creating implementation repositories.
 
 ## 15. Definition of migration complete
