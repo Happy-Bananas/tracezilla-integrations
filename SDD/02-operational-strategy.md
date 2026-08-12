@@ -462,10 +462,11 @@ Completed for the first workflow:
 - Table and JSON output are available with a default display limit of 10.
 - Five unit tests with 13 assertions pass on PHP 8.3.
 - A live read-only run completed using the configured test accounts.
+- GitHub Actions run `31599724717` installed the locked dependencies and passed
+  Composer validation and the complete test suite from a clean checkout.
 
 Remaining:
 
-- Confirm the clean-clone workflow through GitHub Actions.
 - Add later workflows only after their contracts and safety behavior are
   independently reviewed.
 
