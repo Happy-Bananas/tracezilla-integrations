@@ -593,7 +593,7 @@ Completed evidence:
 
 ### Phase 6A — Add Ruby
 
-Status: first workflow implemented; CI verification pending.
+Status: first workflow complete.
 
 The public `tracezilla-shopify-ruby` repository follows the same cross-platform
 Compare Catalogs contract. It uses Ruby 3.4, standard HTTP and JSON libraries,
@@ -608,6 +608,8 @@ Completed evidence:
   and Python against the configured test accounts.
 - The canonical workflow documentation links to the Ruby repository and Docker
   command.
+- GitHub Actions run `31602351833` installed the locked gems and passed the
+  complete test suite and CLI syntax check from a clean checkout.
 
 ## 10. Phase 7 — Decide the Make.com artifact boundary
 
