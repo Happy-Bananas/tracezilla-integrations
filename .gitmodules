@@ -4,9 +4,9 @@
 [submodule "tracezilla-integration-workbench"]
 	path = tracezilla-integration-workbench
 	url = https://github.com/Happy-Bananas/tracezilla-integration-workbench.git
-[submodule "tracezilla-shopify-laravel"]
-	path = tracezilla-shopify-laravel
-	url = https://github.com/Happy-Bananas/tracezilla-shopify-laravel.git
+[submodule "tracezilla-shopify-php"]
+	path = tracezilla-shopify-php
+	url = https://github.com/Happy-Bananas/tracezilla-shopify-php.git
 [submodule "tracezilla-shopify-typescript"]
 	path = tracezilla-shopify-typescript
 	url = https://github.com/Happy-Bananas/tracezilla-shopify-typescript.git

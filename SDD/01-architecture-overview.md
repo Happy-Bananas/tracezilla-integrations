@@ -65,10 +65,10 @@ dependencies.
 
 Examples include:
 
-- `tracezilla-shopify-laravel`
+- `tracezilla-shopify-php`
 - `tracezilla-shopify-typescript`
 - `tracezilla-shopify-python`
-- `tracezilla-woocommerce-laravel`
+- `tracezilla-woocommerce-php`
 
 Repositories are created when a maintained implementation exists, not to fill
 an aspirational matrix.
@@ -82,7 +82,7 @@ Happy-Bananas/
 ├── tracezilla-integrations
 ├── tracezilla-integrations-docs
 ├── tracezilla-integration-workbench
-├── tracezilla-shopify-laravel
+├── tracezilla-shopify-php
 ├── tracezilla-shopify-typescript
 └── tracezilla-shopify-python
 ```
@@ -97,7 +97,7 @@ content:
 
 ```text
 tracezilla-shopify-make
-tracezilla-woocommerce-laravel
+tracezilla-woocommerce-php
 tracezilla-woocommerce-typescript
 ```
 
@@ -324,12 +324,12 @@ The current `tracezilla-shopify-connector` repository contains a tested
 Laravel Shopify implementation, general documentation, and smaller TypeScript
 and Python examples.
 
-Its intended destination is `tracezilla-shopify-laravel`. The Laravel clients,
-commands, features, tests, and Laravel-specific instructions remain. General
-documentation moves to the documentation hub. TypeScript and Python examples
-move to their respective focused repositories. Workbench functionality is
-implemented separately, reusing concepts rather than coupling repository
-runtime code.
+Its PHP behavior is a reference source for `tracezilla-shopify-php`, but the
+new implementation is framework-neutral rather than a copy of the Laravel
+application. General documentation moves to the documentation hub. TypeScript
+and Python examples move to their respective focused repositories. The Laravel
+application remains in the separate workbench, reusing concepts rather than
+coupling repository runtime code.
 
 Migration must be staged. Existing URLs remain available until redirects or
 replacement pages are verified.

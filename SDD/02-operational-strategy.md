@@ -69,7 +69,7 @@ Repositories planned for the initial transition:
 | Repository | Purpose | Creation checkpoint |
 |---|---|---|
 | `tracezilla-integrations-docs` | Published service-first documentation | Phase 2 |
-| `tracezilla-shopify-laravel` | New focused copy of proven Laravel Shopify examples | Created; population begins in Phase 4 |
+| `tracezilla-shopify-php` | Framework-neutral PHP templates for Shopify workflows | Created; implementation begins in Phase 4 |
 | `tracezilla-shopify-typescript` | Focused TypeScript Shopify examples | Phase 5 |
 | `tracezilla-shopify-python` | Focused Python Shopify examples | Phase 6 |
 | `tracezilla-integration-workbench` | Local consultant workbench | Phase 8 |
@@ -90,14 +90,14 @@ created only when their first tested workflow is ready.
 | Step 3.2 — tracezilla fundamentals | Complete | Account, authentication, validation, entities, pagination, mapping, results, and safety are documented |
 | Step 3.3 — Shopify content | In progress | Setup and connection validation are migrated; workflow groups remain |
 | Step 3.4 — Migration inventory | Not started | Legacy-to-canonical destination map remains to be written |
-| Phase 4 — Shopify Laravel | Repository ready | Repository contains only its initial README and license; contract and implementation work have not started |
+| Phase 4 — Shopify PHP | Repository ready | Repository contains only its initial README and license; contract and implementation work have not started |
 | Phase 5 — Shopify TypeScript | Repository ready | Public repository exists and is registered in the umbrella workspace; implementation has not started |
 | Phases 6–7, 9–10 | Not started | No Python or WooCommerce implementation repositories have been created |
 | Phase 8 | In progress | Legacy Laravel baseline runs with `.env` credentials; connection tools are retained and the first preview/confirmed-write SKU workflow is implemented |
 
 Current delivery focus: consolidate and document the working SKU-import pilot,
 then return to documentation quality checks, migration inventory, and the
-focused Shopify Laravel repository.
+focused Shopify PHP repository.
 
 ## 4. Phase 1 — Freeze the legacy repository
 
@@ -144,7 +144,7 @@ tracezilla-integrations/
 ├── .gitmodules
 ├── tracezilla-integrations-docs/
 ├── tracezilla-integration-workbench/
-├── tracezilla-shopify-laravel/
+├── tracezilla-shopify-php/
 └── tracezilla-shopify-typescript/
 ```
 
@@ -398,18 +398,18 @@ Verification:
 
 Git checkpoint: migration inventory committed in the documentation repository.
 
-## 7. Phase 4 — Create the focused Laravel repository
+## 7. Phase 4 — Create the framework-neutral PHP repository
 
 Status: Repository created; implementation not started.
 
-Owner checkpoint complete: `Happy-Bananas/tracezilla-shopify-laravel` exists
+Owner checkpoint complete: `Happy-Bananas/tracezilla-shopify-php` exists
 as a new public repository and is cloned beneath the local workspace. The
 legacy `tracezilla-shopify-connector` is not renamed or modified.
 
-### Step 4.1 — Define the Laravel repository contract
+### Step 4.1 — Define the PHP repository contract
 
-Outcome: the README clearly describes a Laravel Shopify implementation library
-and example application, not the documentation hub or workbench.
+Outcome: the README describes ready-to-use, framework-neutral PHP templates
+for Shopify workflows, not the documentation hub or Laravel workbench.
 
 Scope:
 
@@ -418,20 +418,21 @@ Scope:
 - Explain installation, configuration, tests, and adaptation points.
 - Remove claims that the repository is a universal connector.
 
-Verification: a fresh-clone Laravel-only onboarding test succeeds.
+Verification: a fresh-clone PHP onboarding test succeeds without installing an
+application framework.
 
 Git checkpoint: repository-contract pull request.
 
-### Step 4.2 — Populate the new Laravel repository
+### Step 4.2 — Populate the new PHP repository
 
-Outcome: selected proven Laravel implementation code is copied into a clean,
-focused repository with the new identity.
+Outcome: selected proven behavior is implemented in a clean, framework-neutral
+PHP repository.
 
 Scope:
 
-- Copy only the Laravel application, tests, and required runtime assets.
-- Exclude legacy Jekyll, TypeScript, Python, accidental files, and generated
-  content.
+- Reuse verified API behavior without copying Laravel application boundaries.
+- Exclude legacy Jekyll, Laravel UI and Artisan code, TypeScript, Python,
+  accidental files, and generated content.
 - Update Composer package metadata, headings, repository links, and assets.
 - Implement a fresh-clone Docker flow in the new repository.
 - Preserve copyright and license information.
@@ -439,21 +440,21 @@ Scope:
 Verification:
 
 - Clone the new repository using its own URL.
-- Docker startup and all Laravel tests pass.
+- Docker startup and all PHP tests pass without Laravel.
 - Documentation hub links resolve to the new repository.
 
 Git checkpoint: initial working repository push.
 
 ### Step 4.3 — Publish documentation links
 
-Outcome: the documentation hub points to the verified new Laravel repository.
+Outcome: the documentation hub points to the verified new PHP repository.
 
 Precondition: the new repository passes clean-clone setup and tests.
 
 Verification:
 
 - README and documentation links resolve in both directions.
-- Laravel coverage is changed from `Planned` to `Maintained` only for verified
+- PHP coverage is changed from `Planned` to `Maintained` only for verified
   workflows.
 
 Git checkpoint: focused documentation pull request. The legacy repository is
@@ -528,7 +529,7 @@ Decision criteria:
 - Do not create a repository solely for a short documentation page.
 
 Verification: a consultant can reproduce the verified recipe without access to
-the Laravel repository.
+the PHP repository or Laravel workbench.
 
 Git checkpoint: decision record plus implementation in the selected location.
 
@@ -756,8 +757,8 @@ Next execution sequence:
 1. Manually verify the documented workbench SKU-import pilot, including its
    demonstration mapping and write-safety boundary.
 2. Create the legacy-to-canonical documentation destination map.
-3. Define and populate the focused Shopify Laravel repository using only the
-   selected maintained implementation code.
+3. Define and populate the framework-neutral Shopify PHP repository using the
+   selected maintained behavior from the legacy implementation.
 4. Migrate the Shopify catalog comparison workflow as the first complete
    workflow/implementation navigation pilot.
 5. Review the rendered site before migrating inventory and order workflows or
@@ -770,7 +771,7 @@ The initial migration is complete when:
 - The service-first documentation hub is live and validated.
 - Legacy documentation has a recorded destination map; the frozen legacy
   repository remains unchanged.
-- A new focused Shopify Laravel repository runs independently.
+- A new framework-neutral Shopify PHP repository runs independently.
 - TypeScript and Python examples run from independent repositories.
 - Legacy embedded copies are no longer treated as maintained implementations.
 - The workbench validates configured credentials and provides a reviewed,

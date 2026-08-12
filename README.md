@@ -29,7 +29,7 @@ git submodule update --init --recursive
 | `SDD/` | Program-level architecture and operational strategy | Active, local planning material |
 | `tracezilla-integrations-docs/` | Service-first Jekyll documentation hub | Published and maintained |
 | `tracezilla-integration-workbench/` | Local consultant tool based on Laravel | Active; connection checks and SKU-import pilot work |
-| `tracezilla-shopify-laravel/` | Focused Shopify/Laravel examples | Repository created; implementation pending |
+| `tracezilla-shopify-php/` | Framework-neutral Shopify/PHP templates | Repository created; implementation pending |
 | `tracezilla-shopify-typescript/` | Focused Shopify/TypeScript examples | Repository created; implementation pending |
 
 Planned repositories are created only when working, tested content is ready.
