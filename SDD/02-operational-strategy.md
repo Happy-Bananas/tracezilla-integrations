@@ -636,12 +636,14 @@ Completed evidence:
 
 ### Phase 6C — Add Java
 
-Status: first workflow implemented; CI verification pending.
+Status: first workflow complete.
 
 The public `tracezilla-shopify-java` repository implements the same contract as
 a framework-neutral Java 21 CLI. Maven compiles with lint warnings as errors,
 packages a runnable JAR, and runs JUnit tests inside Docker. A live read-only
 run produced the same comparison counts as every other maintained platform.
+GitHub Actions run `31603963666` compiled with lint warnings as errors, ran the
+JUnit suite, and packaged the application from a clean checkout.
 
 ## 10. Phase 7 — Decide the Make.com artifact boundary
 
