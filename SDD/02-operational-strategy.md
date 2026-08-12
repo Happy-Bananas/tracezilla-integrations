@@ -493,7 +493,7 @@ Completed for Compare Catalogs:
 
 ## 8. Phase 5 — Extract TypeScript
 
-Status: first workflow implemented; CI verification pending.
+Status: first workflow complete.
 
 Owner checkpoint complete: `tracezilla-shopify-typescript` is public and
 registered in the umbrella workspace.
@@ -529,6 +529,9 @@ Completed evidence:
   vulnerabilities.
 - A live read-only run produced the same comparison counts as PHP against the
   configured test accounts.
+- GitHub Actions run `31600630210` installed locked dependencies, passed strict
+  type checking and all tests, and completed the dependency audit from a clean
+  checkout.
 
 ### Step 5.2 — Link the canonical TypeScript implementation
 
