@@ -557,7 +557,7 @@ Completed for Compare Catalogs:
 
 ## 9. Phase 6 — Extract Python
 
-Status: first workflow implemented; CI verification pending.
+Status: first workflow complete.
 
 Owner checkpoint complete: `tracezilla-shopify-python` is public and registered
 in the umbrella workspace.
@@ -586,6 +586,9 @@ Completed evidence:
   TypeScript against the configured test accounts.
 - Shopify coverage and the canonical workflow page link to the Python
   repository and Docker command.
+- GitHub Actions run `31601740836` installed the locked dependencies, passed
+  strict mypy checking, all tests, and dependency consistency checks from a
+  clean checkout.
 
 ## 10. Phase 7 — Decide the Make.com artifact boundary
 
