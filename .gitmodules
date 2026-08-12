@@ -13,3 +13,6 @@
 [submodule "tracezilla-shopify-python"]
 	path = tracezilla-shopify-python
 	url = https://github.com/Happy-Bananas/tracezilla-shopify-python.git
+[submodule "tracezilla-shopify-ruby"]
+	path = tracezilla-shopify-ruby
+	url = https://github.com/Happy-Bananas/tracezilla-shopify-ruby.git

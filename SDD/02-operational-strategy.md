@@ -93,6 +93,7 @@ created only when their first tested workflow is ready.
 | Phase 4 — Shopify PHP | In progress | Framework-neutral Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
 | Phase 5 — Shopify TypeScript | First workflow complete | Dockerized Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
 | Phase 6 — Shopify Python | First workflow complete | Dockerized Compare Catalogs CLI is implemented, typed, tested, and verified read-only against configured APIs |
+| Phase 6A — Shopify Ruby | First workflow complete | Dockerized Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
 | Phases 7, 9–10 | Not started | Make.com remains deferred and no WooCommerce implementation repositories have been created |
 | Phase 8 | In progress | Legacy Laravel baseline runs with `.env` credentials; connection tools are retained and the first preview/confirmed-write SKU workflow is implemented |
 
@@ -589,6 +590,24 @@ Completed evidence:
 - GitHub Actions run `31601740836` installed the locked dependencies, passed
   strict mypy checking, all tests, and dependency consistency checks from a
   clean checkout.
+
+### Phase 6A — Add Ruby
+
+Status: first workflow implemented; CI verification pending.
+
+The public `tracezilla-shopify-ruby` repository follows the same cross-platform
+Compare Catalogs contract. It uses Ruby 3.4, standard HTTP and JSON libraries,
+locked gems, and Docker without Rails or another application framework.
+
+Completed evidence:
+
+- Query, client, catalog service, mapper, workflow, and output boundaries match
+  the other maintained platforms.
+- Five tests with nine assertions pass in Docker.
+- A live read-only run produced the same comparison counts as PHP, TypeScript,
+  and Python against the configured test accounts.
+- The canonical workflow documentation links to the Ruby repository and Docker
+  command.
 
 ## 10. Phase 7 — Decide the Make.com artifact boundary
 
