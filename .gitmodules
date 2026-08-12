@@ -10,3 +10,6 @@
 [submodule "tracezilla-shopify-typescript"]
 	path = tracezilla-shopify-typescript
 	url = https://github.com/Happy-Bananas/tracezilla-shopify-typescript.git
+[submodule "tracezilla-shopify-python"]
+	path = tracezilla-shopify-python
+	url = https://github.com/Happy-Bananas/tracezilla-shopify-python.git

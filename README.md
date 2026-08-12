@@ -29,8 +29,9 @@ git submodule update --init --recursive
 | `SDD/` | Program-level architecture and operational strategy | Active, local planning material |
 | `tracezilla-integrations-docs/` | Service-first Jekyll documentation hub | Published and maintained |
 | `tracezilla-integration-workbench/` | Local consultant tool based on Laravel | Active; connection checks and SKU-import pilot work |
-| `tracezilla-shopify-php/` | Framework-neutral Shopify/PHP templates | Repository created; implementation pending |
-| `tracezilla-shopify-typescript/` | Focused Shopify/TypeScript examples | Repository created; implementation pending |
+| `tracezilla-shopify-php/` | Framework-neutral Shopify/PHP templates | Compare Catalogs maintained |
+| `tracezilla-shopify-typescript/` | Framework-neutral Shopify/TypeScript templates | Compare Catalogs maintained |
+| `tracezilla-shopify-python/` | Framework-neutral Shopify/Python templates | Compare Catalogs maintained |
 
 Planned repositories are created only when working, tested content is ready.
 The frozen legacy source remains separately at:

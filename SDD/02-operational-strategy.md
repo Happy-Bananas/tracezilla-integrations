@@ -92,7 +92,8 @@ created only when their first tested workflow is ready.
 | Step 3.4 — Migration inventory | Not started | Legacy-to-canonical destination map remains to be written |
 | Phase 4 — Shopify PHP | In progress | Framework-neutral Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
 | Phase 5 — Shopify TypeScript | First workflow complete | Dockerized Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
-| Phases 6–7, 9–10 | Not started | No Python or WooCommerce implementation repositories have been created |
+| Phase 6 — Shopify Python | First workflow complete | Dockerized Compare Catalogs CLI is implemented, typed, tested, and verified read-only against configured APIs |
+| Phases 7, 9–10 | Not started | Make.com remains deferred and no WooCommerce implementation repositories have been created |
 | Phase 8 | In progress | Legacy Laravel baseline runs with `.env` credentials; connection tools are retained and the first preview/confirmed-write SKU workflow is implemented |
 
 Current delivery focus: complete the Compare Catalogs publication checkpoint,
@@ -556,7 +557,10 @@ Completed for Compare Catalogs:
 
 ## 9. Phase 6 — Extract Python
 
-Owner checkpoint: create `tracezilla-shopify-python`.
+Status: first workflow implemented; CI verification pending.
+
+Owner checkpoint complete: `tracezilla-shopify-python` is public and registered
+in the umbrella workspace.
 
 Repeat the TypeScript extraction pattern:
 
@@ -569,6 +573,19 @@ Repeat the TypeScript extraction pattern:
 
 Git checkpoint: initial repository push followed by a documentation link pull
 request.
+
+Completed evidence:
+
+- Framework-neutral Python mirrors the PHP and TypeScript query, client,
+  catalog service, mapper, workflow, and output boundaries.
+- The Docker image contains Python 3.12 and locked dependencies; no host Python
+  installation is required.
+- Strict mypy checking passes and six pytest tests cover mapping, pagination,
+  comparison, and output.
+- A live read-only run produced the same comparison counts as PHP and
+  TypeScript against the configured test accounts.
+- Shopify coverage and the canonical workflow page link to the Python
+  repository and Docker command.
 
 ## 10. Phase 7 — Decide the Make.com artifact boundary
 
