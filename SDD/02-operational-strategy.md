@@ -95,6 +95,7 @@ created only when their first tested workflow is ready.
 | Phase 6 — Shopify Python | First workflow complete | Dockerized Compare Catalogs CLI is implemented, typed, tested, and verified read-only against configured APIs |
 | Phase 6A — Shopify Ruby | First workflow complete | Dockerized Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
 | Phase 6B — Shopify .NET | First workflow complete | Dockerized Compare Catalogs console app is implemented, tested, and verified read-only against configured APIs |
+| Phase 6C — Shopify Java | First workflow complete | Dockerized Java 21 Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
 | Phases 7, 9–10 | Not started | Make.com remains deferred and no WooCommerce implementation repositories have been created |
 | Phase 8 | In progress | Legacy Laravel baseline runs with `.env` credentials; connection tools are retained and the first preview/confirmed-write SKU workflow is implemented |
 
@@ -632,6 +633,15 @@ Completed evidence:
   command.
 - GitHub Actions run `31603443208` restored locked dependencies, compiled with
   warnings as errors, and passed all tests from a clean checkout.
+
+### Phase 6C — Add Java
+
+Status: first workflow implemented; CI verification pending.
+
+The public `tracezilla-shopify-java` repository implements the same contract as
+a framework-neutral Java 21 CLI. Maven compiles with lint warnings as errors,
+packages a runnable JAR, and runs JUnit tests inside Docker. A live read-only
+run produced the same comparison counts as every other maintained platform.
 
 ## 10. Phase 7 — Decide the Make.com artifact boundary
 

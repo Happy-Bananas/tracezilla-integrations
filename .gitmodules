@@ -19,3 +19,6 @@
 [submodule "tracezilla-shopify-dotnet"]
 	path = tracezilla-shopify-dotnet
 	url = https://github.com/Happy-Bananas/tracezilla-shopify-dotnet.git
+[submodule "tracezilla-shopify-java"]
+	path = tracezilla-shopify-java
+	url = https://github.com/Happy-Bananas/tracezilla-shopify-java.git

@@ -34,6 +34,7 @@ git submodule update --init --recursive
 | `tracezilla-shopify-python/` | Framework-neutral Shopify/Python templates | Compare Catalogs maintained |
 | `tracezilla-shopify-ruby/` | Framework-neutral Shopify/Ruby templates | Compare Catalogs maintained |
 | `tracezilla-shopify-dotnet/` | Framework-neutral Shopify/.NET templates | Compare Catalogs maintained |
+| `tracezilla-shopify-java/` | Framework-neutral Shopify/Java templates | Compare Catalogs maintained |
 
 Planned repositories are created only when working, tested content is ready.
 The frozen legacy source remains separately at:

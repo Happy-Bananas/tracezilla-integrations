@@ -70,6 +70,7 @@ Examples include:
 - `tracezilla-shopify-python`
 - `tracezilla-shopify-ruby`
 - `tracezilla-shopify-dotnet`
+- `tracezilla-shopify-java`
 - `tracezilla-woocommerce-php`
 
 Repositories are created when a maintained implementation exists, not to fill
@@ -88,7 +89,8 @@ Happy-Bananas/
 ├── tracezilla-shopify-typescript
 ├── tracezilla-shopify-python
 ├── tracezilla-shopify-ruby
-└── tracezilla-shopify-dotnet
+├── tracezilla-shopify-dotnet
+└── tracezilla-shopify-java
 ```
 
 `tracezilla-integrations` is the umbrella workspace repository. It owns the
