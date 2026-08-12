@@ -90,14 +90,14 @@ created only when their first tested workflow is ready.
 | Step 3.2 — tracezilla fundamentals | Complete | Account, authentication, validation, entities, pagination, mapping, results, and safety are documented |
 | Step 3.3 — Shopify content | In progress | Setup and connection validation are migrated; workflow groups remain |
 | Step 3.4 — Migration inventory | Not started | Legacy-to-canonical destination map remains to be written |
-| Phase 4 — Shopify PHP | Repository ready | Repository contains only its initial README and license; contract and implementation work have not started |
+| Phase 4 — Shopify PHP | In progress | Framework-neutral Compare Catalogs CLI is implemented, tested, and verified read-only against configured APIs |
 | Phase 5 — Shopify TypeScript | Repository ready | Public repository exists and is registered in the umbrella workspace; implementation has not started |
 | Phases 6–7, 9–10 | Not started | No Python or WooCommerce implementation repositories have been created |
 | Phase 8 | In progress | Legacy Laravel baseline runs with `.env` credentials; connection tools are retained and the first preview/confirmed-write SKU workflow is implemented |
 
-Current delivery focus: consolidate and document the working SKU-import pilot,
-then return to documentation quality checks, migration inventory, and the
-focused Shopify PHP repository.
+Current delivery focus: complete the Compare Catalogs publication checkpoint,
+then consolidate the workbench SKU-import pilot and create the documentation
+migration inventory.
 
 ## 4. Phase 1 — Freeze the legacy repository
 
@@ -400,7 +400,7 @@ Git checkpoint: migration inventory committed in the documentation repository.
 
 ## 7. Phase 4 — Create the framework-neutral PHP repository
 
-Status: Repository created; implementation not started.
+Status: In progress; first workflow implemented.
 
 Owner checkpoint complete: `Happy-Bananas/tracezilla-shopify-php` exists
 as a new public repository and is cloned beneath the local workspace. The
@@ -422,6 +422,12 @@ Verification: a fresh-clone PHP onboarding test succeeds without installing an
 application framework.
 
 Git checkpoint: repository-contract pull request.
+
+Completed evidence:
+
+- The README defines a framework-neutral PHP boundary and explains each layer.
+- Docker, Composer, `.env.example`, and a reproducible test command are present.
+- Laravel remains confined to the optional integration workbench.
 
 ### Step 4.2 — Populate the new PHP repository
 
@@ -445,6 +451,24 @@ Verification:
 
 Git checkpoint: initial working repository push.
 
+Completed for the first workflow:
+
+- Shopify GraphQL query, authenticated client, pagination service, and response
+  mapper are separated.
+- The tracezilla client, paginated SKU service, and response mapper are
+  separated.
+- Both APIs map to a shared `CatalogItem`; `CompareCatalogs` has no HTTP or
+  framework dependency.
+- Table and JSON output are available with a default display limit of 10.
+- Five unit tests with 13 assertions pass on PHP 8.3.
+- A live read-only run completed using the configured test accounts.
+
+Remaining:
+
+- Confirm the clean-clone workflow through GitHub Actions.
+- Add later workflows only after their contracts and safety behavior are
+  independently reviewed.
+
 ### Step 4.3 — Publish documentation links
 
 Outcome: the documentation hub points to the verified new PHP repository.
@@ -459,6 +483,12 @@ Verification:
 
 Git checkpoint: focused documentation pull request. The legacy repository is
 unchanged.
+
+Completed for Compare Catalogs:
+
+- The canonical workflow page documents the SKU matching rule, read-only
+  boundary, result categories, and PHP command.
+- Shopify coverage links to the maintained PHP implementation.
 
 ## 8. Phase 5 — Extract TypeScript
 
