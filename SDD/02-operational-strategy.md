@@ -35,7 +35,7 @@ service, mapper, workflow, output, and thin entry point.
 |---|---|---|
 | Compare catalogs | `PullCatalogFromShopify` | Complete |
 | Push catalog to Shopify | `PushCatalogToShopify` | Not started |
-| Create tracezilla SKUs from Shopify | `TracezillaSkusFromShopifyCommand` | PHP implemented; sandbox write and evaluation pending |
+| Create tracezilla SKUs from Shopify | `TracezillaSkusFromShopifyCommand` | Implemented on all maintained platforms; sandbox write pending |
 | List Shopify locations | `CheckLocationsInShopify` | Not started |
 | Synchronize inventory | `UpdateInventoryInShopify` | Not started |
 | Import individual orders | `PullOrdersFromShopifyIndividual` | Not started |
@@ -128,8 +128,8 @@ availability.
 
 ## Next execution sequence
 
-1. Evaluate the PHP **Create tracezilla SKUs from Shopify** implementation with
-   one bounded sandbox write, then port the approved behavior.
+1. Evaluate **Create tracezilla SKUs from Shopify** with one bounded PHP sandbox
+   write, then repeat the dry run to verify idempotency.
 2. Add the minimum workbench test-data tools needed to verify it safely.
 3. Port locations and inventory workflows.
 4. Port individual and collected order workflows.
