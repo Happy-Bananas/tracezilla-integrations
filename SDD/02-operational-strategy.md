@@ -36,7 +36,7 @@ service, mapper, workflow, output, and thin entry point.
 | Compare catalogs | `PullCatalogFromShopify` | Complete |
 | Push catalog to Shopify | `PushCatalogToShopify` | Not started |
 | Create tracezilla SKUs from Shopify | `TracezillaSkusFromShopifyCommand` | Implemented on all maintained platforms; sandbox write pending |
-| List Shopify locations | `CheckLocationsInShopify` | PHP implemented and sandbox verified; other platforms pending |
+| List Shopify locations | `CheckLocationsInShopify` | Implemented on all maintained platforms; PHP sandbox verified |
 | Synchronize inventory | `UpdateInventoryInShopify` | Not started |
 | Import individual orders | `PullOrdersFromShopifyIndividual` | Not started |
 | Import collected orders | `PullOrdersFromShopifyCollected` | Not started |
