@@ -75,6 +75,8 @@ tests. Do not build a general-purpose data generator.
 - Keep each platform page as its installation and architecture guide.
 - Add a self-contained child page for every command implemented on that
   platform; repetition between platforms is acceptable.
+- Keep the same section order and equivalent guidance depth for a workflow on
+  every platform; only commands, paths, and language-specific details differ.
 - Link only implementations that pass clean-clone tests and sandbox checks.
 - Add owner-reviewed Shopify Setup screenshots later without rewriting its
   instructions.
