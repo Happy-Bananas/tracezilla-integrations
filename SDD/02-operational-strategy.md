@@ -69,10 +69,12 @@ Required behavior:
 Start with the minimum data needed by catalog, inventory, and order workflow
 tests. Do not build a general-purpose data generator.
 
-## 3. Finish Shopify workflow documentation
+## 3. Finish Shopify command documentation
 
-- Create one canonical page per ported workflow.
-- Keep business behavior and mappings independent of programming language.
+- Organize navigation as Shopify → platform → command.
+- Keep each platform page as its installation and architecture guide.
+- Add a self-contained child page for every command implemented on that
+  platform; repetition between platforms is acceptable.
 - Link only implementations that pass clean-clone tests and sandbox checks.
 - Add owner-reviewed Shopify Setup screenshots later without rewriting its
   instructions.
