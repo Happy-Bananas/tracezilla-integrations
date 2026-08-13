@@ -22,3 +22,6 @@
 [submodule "tracezilla-shopify-java"]
 	path = tracezilla-shopify-java
 	url = https://github.com/Happy-Bananas/tracezilla-shopify-java.git
+[submodule "tracezilla-woocommerce-php"]
+	path = tracezilla-woocommerce-php
+	url = https://github.com/Happy-Bananas/tracezilla-woocommerce-php.git

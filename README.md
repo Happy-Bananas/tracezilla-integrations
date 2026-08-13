@@ -35,6 +35,7 @@ git submodule update --init --recursive
 | `tracezilla-shopify-ruby/` | Framework-neutral Shopify/Ruby templates | Compare Catalogs maintained |
 | `tracezilla-shopify-dotnet/` | Framework-neutral Shopify/.NET templates | Compare Catalogs maintained |
 | `tracezilla-shopify-java/` | Framework-neutral Shopify/Java templates | Compare Catalogs maintained |
+| `tracezilla-woocommerce-php/` | Standalone WooCommerce/PHP examples and local sandbox | Sandbox and connection test available |
 
 Planned repositories are created only when working, tested content is ready.
 The frozen legacy source remains separately at:
@@ -89,6 +90,15 @@ docker compose up -d db app
 Open <http://localhost:8000/>. The workbench's bundled legacy documentation
 service is not started because the dedicated documentation repository owns
 port 4000.
+
+WooCommerce sandbox:
+
+```bash
+cd tracezilla-woocommerce-php
+docker compose --profile sandbox up -d
+```
+
+Open <http://localhost:8080/wp-admin>.
 
 ## Planning documents
 
