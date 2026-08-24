@@ -29,15 +29,13 @@ git submodule update --init --recursive
 | `SDD/` | Program-level architecture and operational strategy | Active, local planning material |
 | `tracezilla-integrations-docs/` | Service-first Jekyll documentation hub | Published and maintained |
 | `tracezilla-integration-php/` | Headless, programmable PHP integration | Primary customer deployment; Shopify adapter available |
-| `tracezilla-shopify-typescript/` | Framework-neutral Shopify/TypeScript templates | Compare Catalogs maintained |
-| `tracezilla-shopify-python/` | Framework-neutral Shopify/Python templates | Compare Catalogs maintained |
-| `tracezilla-shopify-ruby/` | Framework-neutral Shopify/Ruby templates | Compare Catalogs maintained |
-| `tracezilla-shopify-dotnet/` | Framework-neutral Shopify/.NET templates | Compare Catalogs maintained |
-| `tracezilla-shopify-java/` | Framework-neutral Shopify/Java templates | Compare Catalogs maintained |
 | `tracezilla-woocommerce-php/` | Deployable WooCommerce/PHP console integration | Connection test available; workflows in progress |
 | `tracezilla-woocommerce-sandbox/` | Disposable WordPress/WooCommerce development store | Seeded sandbox available |
 
 Planned repositories are created only when working, tested content is ready.
+Additional language examples remain available through the
+[implementations directory](https://happy-bananas.github.io/tracezilla-integrations-docs/implementations.html)
+without being checked out as umbrella submodules.
 The frozen legacy source remains separately at:
 
 ```text
