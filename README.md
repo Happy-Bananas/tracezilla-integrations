@@ -28,14 +28,14 @@ git submodule update --init --recursive
 |---|---|---|
 | `SDD/` | Program-level architecture and operational strategy | Active, local planning material |
 | `tracezilla-integrations-docs/` | Service-first Jekyll documentation hub | Published and maintained |
-| `tracezilla-integration-workbench/` | Local consultant tool based on Laravel | Active; connection checks and SKU-import pilot work |
-| `tracezilla-shopify-php/` | Framework-neutral Shopify/PHP templates | Compare Catalogs maintained |
+| `tracezilla-integration-php/` | Headless, programmable PHP integration | Primary customer deployment; Shopify adapter available |
 | `tracezilla-shopify-typescript/` | Framework-neutral Shopify/TypeScript templates | Compare Catalogs maintained |
 | `tracezilla-shopify-python/` | Framework-neutral Shopify/Python templates | Compare Catalogs maintained |
 | `tracezilla-shopify-ruby/` | Framework-neutral Shopify/Ruby templates | Compare Catalogs maintained |
 | `tracezilla-shopify-dotnet/` | Framework-neutral Shopify/.NET templates | Compare Catalogs maintained |
 | `tracezilla-shopify-java/` | Framework-neutral Shopify/Java templates | Compare Catalogs maintained |
-| `tracezilla-woocommerce-php/` | Standalone WooCommerce/PHP examples and local sandbox | Sandbox and connection test available |
+| `tracezilla-woocommerce-php/` | Deployable WooCommerce/PHP console integration | Connection test available; workflows in progress |
+| `tracezilla-woocommerce-sandbox/` | Disposable WordPress/WooCommerce development store | Seeded sandbox available |
 
 Planned repositories are created only when working, tested content is ready.
 The frozen legacy source remains separately at:
@@ -64,8 +64,8 @@ The frozen legacy source remains separately at:
 When a child repository has been pushed, record its new revision here:
 
 ```bash
-git add tracezilla-integration-workbench
-git commit -m "Update workbench revision"
+git add tracezilla-integration-php
+git commit -m "Update headless integration revision"
 git push
 ```
 
@@ -80,22 +80,25 @@ docker compose up -d
 
 Open <http://localhost:4000/>.
 
-Workbench application (after its documented setup):
+Headless PHP integration:
 
 ```bash
-cd tracezilla-integration-workbench
-docker compose up -d db app
+cd tracezilla-integration-php
+docker compose up --build
 ```
 
-Open <http://localhost:8000/>. The workbench's bundled legacy documentation
-service is not started because the dedicated documentation repository owns
-port 4000.
+When the ready message appears, open a second terminal and list the available
+commands:
+
+```bash
+docker compose exec integration php bin/tracezilla-integration help
+```
 
 WooCommerce sandbox:
 
 ```bash
-cd tracezilla-woocommerce-php
-docker compose --profile sandbox up -d
+cd tracezilla-woocommerce-sandbox
+docker compose up -d
 ```
 
 Open <http://localhost:8080/wp-admin>.

@@ -35,7 +35,8 @@ implementation repository relevant to their service and platform.
 
 ## 3. Product model
 
-The ecosystem has three distinct product types.
+The ecosystem has two product types: the documentation hub and headless
+integration implementations.
 
 ### 3.1 Documentation hub
 
@@ -47,31 +48,30 @@ Its local authoring and validation environment runs in its own container. The
 container is not the production runtime: GitHub Pages receives a generated
 static site through an automated build and deployment workflow.
 
-### 3.2 Integration workbench
-
-The workbench is a local application for consultants. It helps validate
-credentials, inspect external and tracezilla data, discover identifiers and
-mappings, preview transformations, and prepare controlled test data in
-tracezilla.
-
-The workbench is not an example template and does not define how a production
-integration must be implemented.
-
-### 3.3 Focused implementation repositories
+### 3.2 Headless integration implementations
 
 Each implementation repository combines one external service with one
 implementation platform. A consultant downloads only the relevant code and
 dependencies.
 
+The primary deployment is a standalone headless application. It communicates
+directly with the external commerce service and tracezilla, runs manually or
+under a scheduler, and contains customer-specific business rules. It does not
+require a separate UI or custom client application.
+
 Examples include:
 
-- `tracezilla-shopify-php`
+- `tracezilla-integration-php`
 - `tracezilla-shopify-typescript`
 - `tracezilla-shopify-python`
 - `tracezilla-shopify-ruby`
 - `tracezilla-shopify-dotnet`
 - `tracezilla-shopify-java`
 - `tracezilla-woocommerce-php`
+
+The workspace-owned `tracezilla-woocommerce-sandbox` directory is a disposable
+WordPress development environment, not an integration implementation or
+independent product repository.
 
 Repositories are created when a maintained implementation exists, not to fill
 an aspirational matrix.
@@ -84,13 +84,13 @@ The initial target under the Happy Bananas GitHub organization is:
 Happy-Bananas/
 ├── tracezilla-integrations
 ├── tracezilla-integrations-docs
-├── tracezilla-integration-workbench
-├── tracezilla-shopify-php
+├── tracezilla-integration-php
 ├── tracezilla-shopify-typescript
 ├── tracezilla-shopify-python
 ├── tracezilla-shopify-ruby
 ├── tracezilla-shopify-dotnet
-└── tracezilla-shopify-java
+├── tracezilla-shopify-java
+└── tracezilla-woocommerce-php
 ```
 
 `tracezilla-integrations` is the umbrella workspace repository. It owns the
@@ -103,7 +103,6 @@ content:
 
 ```text
 tracezilla-shopify-make
-tracezilla-woocommerce-php
 tracezilla-woocommerce-typescript
 ```
 
@@ -119,7 +118,7 @@ Shared products use purpose-based names:
 
 ```text
 tracezilla-integrations-docs
-tracezilla-integration-workbench
+tracezilla-integration-php
 ```
 
 Names use lowercase words separated by hyphens. Official product spelling is
@@ -135,14 +134,6 @@ The documentation repository owns:
 - Links to maintained implementation repositories.
 - Documentation build, link checking, and GitHub Pages deployment.
 
-The workbench repository owns:
-
-- Its user interface and local runtime.
-- Runtime credential entry and safe credential lifecycle.
-- Connection diagnostics and data inspection.
-- Preview and controlled test-data preparation tools.
-- Workbench-specific documentation and tests.
-
 An implementation repository owns:
 
 - Runnable source code for one service/platform combination.
@@ -151,7 +142,7 @@ An implementation repository owns:
 - Platform-specific mapping points and operational limitations.
 
 An implementation repository does not own the canonical documentation for
-other languages, other external services, or the workbench.
+other languages or other external services.
 
 ## 5. Documentation information architecture
 
@@ -209,7 +200,6 @@ Home
 │   │   ├── Examples
 │   │   └── Reference
 │   └── Troubleshooting
-├── Integration Workbench
 └── API Reference
 ```
 
@@ -289,40 +279,18 @@ constraints.
 - Keep credentials out of source control, output, logs, fixtures, and images.
 - Keep each repository independently buildable and testable.
 
-## 8. Workbench architecture and security
+## 8. Deployment model
 
-The workbench is intended primarily for trusted local execution. Its first
-release should support Shopify and tracezilla, while its internal structure
-allows additional credential providers and inspection tools.
+This is the default deployment and should cover most customer requirements:
 
-Credential requirements:
+```text
+Shopify or WooCommerce ↔ headless integration ↔ tracezilla
+```
 
-- Credentials are entered through forms rather than requiring `.env` edits.
-- Secret values are never redisplayed after submission.
-- Secret values are never logged or included in exception output.
-- Credentials are not permanently stored by default.
-- Multi-request credentials use encrypted, short-lived session storage.
-- The user can forget all credentials immediately.
-- Sensitive pages must not be cached.
-- Documentation must warn against exposing the development workbench publicly.
-
-Write-operation requirements:
-
-- Read-only inspection precedes writes.
-- A preview shows the intended payload and affected record count.
-- The user must explicitly confirm execution.
-- Initial operations support a small configurable limit.
-- Results distinguish created, updated, skipped, invalid, and failed items.
-- Secret fields are redacted from payload previews and errors.
-
-Likely workbench capability progression:
-
-1. Enter and validate credentials.
-2. Inspect products, SKUs, locations, inventory, and orders.
-3. Compare external-service data with tracezilla.
-4. Preview customer-specific mappings.
-5. Create limited tracezilla test data.
-6. Export non-secret configuration for a selected implementation template.
+The headless integration owns credentials, customer-specific PHP rules,
+workflow execution, safety controls, structured results, idempotency, and
+operational logs. Console commands, cron, webhooks, or a scheduler may invoke
+the same workflow layer.
 
 ## 9. Current repository disposition
 
@@ -330,12 +298,12 @@ The current `tracezilla-shopify-connector` repository contains a tested
 Laravel Shopify implementation, general documentation, and smaller TypeScript
 and Python examples.
 
-Its PHP behavior is a reference source for `tracezilla-shopify-php`, but the
+Its PHP behavior is a reference source for `tracezilla-integration-php`, but the
 new implementation is framework-neutral rather than a copy of the Laravel
 application. General documentation moves to the documentation hub. TypeScript
 and Python examples move to their respective focused repositories. The Laravel
-application remains in the separate workbench, reusing concepts rather than
-coupling repository runtime code.
+workbench has been removed from the active workspace after useful behavior was
+migrated to the headless implementation.
 
 Migration must be staged. Existing URLs remain available until redirects or
 replacement pages are verified.
@@ -373,7 +341,7 @@ replacement pages are verified.
 - A universal no-configuration connector for every customer.
 - Identical workflow coverage across every service and language.
 - A shared runtime dependency between implementation repositories.
-- Production hosting of the local consultant workbench in its initial scope.
+- Requiring a web UI for customer deployments.
 - Abstracting service-specific APIs before stable repeated patterns exist.
 
 ## 12. Governance and publishing
@@ -392,7 +360,8 @@ The architecture succeeds when:
 
 - Documentation is visibly service-first.
 - Platform examples are nested below their external service.
-- The workbench is clearly separate from reusable examples.
+- A customer can deploy the headless integration directly.
+- Customer-specific business rules are programmable in PHP.
 - Laravel, TypeScript, and Python users can download focused repositories.
 - The current Shopify coverage remains usable throughout migration.
 - A WooCommerce implementation can be added without restructuring existing

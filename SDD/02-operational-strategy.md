@@ -13,7 +13,8 @@ available in Git and the architecture overview.
   reference source.
 - Keep documentation service-first and implementation repositories
   framework-neutral.
-- Keep the Laravel workbench separate from reusable examples.
+- Treat the headless PHP integration as the primary customer deployment.
+- Keep customer business rules programmable through generated PHP scenarios.
 - Do not change Shopify Setup until its owner review and screenshots are ready.
 - Defer Make.com and AWS Lambda without further work.
 - Do not create speculative repositories; create one when its first tested
@@ -27,9 +28,10 @@ Python, Ruby, C#/.NET, and Java.
 
 ## 1. Port the remaining Shopify commands
 
-Port each workbench command into every maintained implementation platform where
-the workflow is useful. Preserve the common architecture: query, client,
-service, mapper, workflow, output, and thin entry point.
+Port each useful legacy command into the headless PHP integration first. Port
+it to another maintained platform only where there is a concrete audience.
+Preserve the common architecture: query, client, service, mapper, workflow,
+output, and thin entry point.
 
 | Workflow | Source command | Status |
 |---|---|---|
@@ -50,24 +52,17 @@ For every workflow:
   failed records.
 - Add automated tests, a live sandbox verification, and canonical
   documentation.
-- Update the workbench only when its interactive form adds value.
 
-## 2. Expand the workbench for test-data preparation
+## 2. Finish the headless starting point
 
-Add guarded tools that can populate development environments with small,
-recognizable datasets in both Shopify and tracezilla.
+Keep the clean-clone path small enough for a consultant to understand without
+learning framework internals:
 
-Required behavior:
-
-- Show which accounts, teams, stores, and locations will be changed.
-- Preview exact records before execution.
-- Use dry run by default, an explicit confirmation, and configurable limits.
-- Make repeated runs safe where possible and clearly identify duplicates.
-- Never expose credentials or permit undocumented production use.
-- Document cleanup or reversal steps for created test data.
-
-Start with the minimum data needed by catalog, inventory, and order workflow
-tests. Do not build a general-purpose data generator.
+- Clone and configure `.env`.
+- Generate a platform-specific scenario.
+- Edit the service requests, PHP business rules, and test.
+- Preview and execute the scenario through the console.
+- Schedule the same command with cron.
 
 ## 3. Finish Shopify command documentation
 
@@ -132,17 +127,15 @@ availability.
 
 1. Evaluate **Create tracezilla SKUs from Shopify** with one bounded PHP sandbox
    write, then repeat the dry run to verify idempotency.
-2. Add the minimum workbench test-data tools needed to verify it safely.
+2. Verify the generated credential scenario from a clean clone.
 3. Port locations and inventory workflows.
 4. Port individual and collected order workflows.
 5. Research tracezilla webhooks and specify the order-closing/email contract.
 6. Establish the WooCommerce test store and Compare Catalogs pilot.
-7. Reassess priorities after all useful workbench commands are ported.
 
 ## Completion criteria
 
-This stage is complete when all useful workbench commands have canonical,
-tested workflow definitions; selected language implementations run from clean
-clones; the workbench safely creates required sandbox data; documentation
-accurately reports coverage; and the next architecture decision is based on
-real Shopify, WooCommerce, and webhook experience.
+This stage is complete when useful workflows have canonical, tested definitions
+in the headless PHP integration; selected implementations run from clean
+clones; generated scenarios provide the normal consultant editing surface; and
+documentation accurately reports coverage.
