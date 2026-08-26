@@ -1,4 +1,4 @@
-# tracezilla Integrations — Architecture Overview
+# BifrostConnect — Architecture Overview
 
 Status: Draft for review
 Owners: Happy Bananas
@@ -48,13 +48,13 @@ Its local authoring and validation environment runs in its own container. The
 container is not the production runtime: GitHub Pages receives a generated
 static site through an automated build and deployment workflow.
 
-### 3.2 Headless integration implementations
+### 3.2 BifrostConnect implementations
 
 Each implementation repository combines one external service with one
 implementation platform. A consultant downloads only the relevant code and
 dependencies.
 
-The primary deployment is a standalone headless application. It communicates
+The primary deployment is BifrostConnect. It communicates
 directly with the external commerce service and tracezilla, runs manually or
 under a scheduler, and contains customer-specific business rules. It does not
 require a separate UI or custom client application.
@@ -284,10 +284,10 @@ constraints.
 This is the default deployment and should cover most customer requirements:
 
 ```text
-Shopify or WooCommerce ↔ headless integration ↔ tracezilla
+Shopify or WooCommerce ↔ BifrostConnect ↔ tracezilla
 ```
 
-The headless integration owns credentials, customer-specific PHP rules,
+BifrostConnect owns credentials, customer-specific PHP rules,
 workflow execution, safety controls, structured results, idempotency, and
 operational logs. Console commands, cron, webhooks, or a scheduler may invoke
 the same workflow layer.
@@ -360,7 +360,7 @@ The architecture succeeds when:
 
 - Documentation is visibly service-first.
 - Platform examples are nested below their external service.
-- A customer can deploy the headless integration directly.
+- A customer can deploy BifrostConnect directly.
 - Customer-specific business rules are programmable in PHP.
 - Laravel, TypeScript, and Python users can download focused repositories.
 - The current Shopify coverage remains usable throughout migration.

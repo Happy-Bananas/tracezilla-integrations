@@ -1,4 +1,4 @@
-# tracezilla Integrations — Operational Strategy
+# BifrostConnect — Operational Strategy
 
 Status: Active
 
@@ -13,7 +13,7 @@ available in Git and the architecture overview.
   reference source.
 - Keep documentation service-first and implementation repositories
   framework-neutral.
-- Treat the headless PHP integration as the primary customer deployment.
+- Treat BifrostConnect as the primary customer deployment.
 - Keep customer business rules programmable through generated PHP scenarios.
 - Do not change Shopify Setup until its owner review and screenshots are ready.
 - Defer Make.com and AWS Lambda without further work.
@@ -28,7 +28,7 @@ Python, Ruby, C#/.NET, and Java.
 
 ## 1. Port the remaining Shopify commands
 
-Port each useful legacy command into the headless PHP integration first. Port
+Port each useful legacy command into BifrostConnect first. Port
 it to another maintained platform only where there is a concrete audience.
 Preserve the common architecture: query, client, service, mapper, workflow,
 output, and thin entry point.
@@ -136,6 +136,6 @@ availability.
 ## Completion criteria
 
 This stage is complete when useful workflows have canonical, tested definitions
-in the headless PHP integration; selected implementations run from clean
+in BifrostConnect; selected implementations run from clean
 clones; generated scenarios provide the normal consultant editing surface; and
 documentation accurately reports coverage.

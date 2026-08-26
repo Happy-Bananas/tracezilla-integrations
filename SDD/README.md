@@ -1,4 +1,4 @@
-# tracezilla Integrations — Software Design Documents
+# BifrostConnect — Software Design Documents
 
 Status: Draft for review
 Owners: Happy Bananas

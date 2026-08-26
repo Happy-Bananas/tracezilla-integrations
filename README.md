@@ -1,4 +1,4 @@
-# Tracezilla Integrations Workspace
+# BifrostConnect Workspace
 
 This repository is the reproducible workspace for the Happy Bananas Tracezilla
 integration ecosystem. Each product remains an independent Git repository and
@@ -28,7 +28,7 @@ git submodule update --init --recursive
 |---|---|---|
 | `SDD/` | Program-level architecture and operational strategy | Active, local planning material |
 | `tracezilla-integrations-docs/` | Service-first Jekyll documentation hub | Published and maintained |
-| `tracezilla-integration-php/` | Headless, programmable PHP integration | Primary customer deployment; Shopify adapter available |
+| `tracezilla-integration-php/` | BifrostConnect PHP application | Primary customer deployment; Shopify adapter available |
 | `tracezilla-woocommerce-php/` | Deployable WooCommerce/PHP console integration | Connection test available; workflows in progress |
 | `tracezilla-woocommerce-sandbox/` | Disposable WordPress/WooCommerce development store | Seeded sandbox available |
 
@@ -63,7 +63,7 @@ When a child repository has been pushed, record its new revision here:
 
 ```bash
 git add tracezilla-integration-php
-git commit -m "Update headless integration revision"
+git commit -m "Update BifrostConnect revision"
 git push
 ```
 
@@ -78,7 +78,7 @@ docker compose up -d
 
 Open <http://localhost:4000/>.
 
-Headless PHP integration:
+BifrostConnect:
 
 ```bash
 cd tracezilla-integration-php
@@ -89,7 +89,7 @@ When the ready message appears, open a second terminal and list the available
 commands:
 
 ```bash
-docker compose exec integration php bin/tracezilla-integration help
+docker compose exec integration php bin/bifrost-connect help
 ```
 
 WooCommerce sandbox:
