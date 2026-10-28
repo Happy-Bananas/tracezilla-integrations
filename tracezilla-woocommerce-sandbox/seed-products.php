@@ -209,56 +209,116 @@ function seed_order(
     return $order;
 }
 
-$simpleProducts = [
-    [
-        'sku' => 'TZ-SIMPLE-001',
-        'name' => 'Tracezilla Test Banana',
-        'regular_price' => '25.00',
-        'manage_stock' => true,
-        'stock_quantity' => 100,
+// Ten food categories of twenty products each give exactly 200 top-level
+// products. SKUs are TZ-<CATEGORY>-<NNN> and must match the tracezilla seed in
+// tracezilla-woocommerce-php/seeds/woocommerce-sandbox.yaml.
+$catalog = [
+    'FRUIT' => [
+        'Fairtrade Bananas 1 kg', 'Golden Pineapple', 'Ripe Mango', 'Red Apples 1 kg', 'Conference Pears 1 kg',
+        'Organic Lemons 500 g', 'Seedless Grapes 500 g', 'Strawberries 400 g', 'Blueberries 250 g', 'Raspberries 125 g',
+        'Navel Oranges 1 kg', 'Kiwi Fruit 6 pcs', 'Clementines 1 kg', 'Avocados 2 pcs', 'Watermelon',
+        'Cherries 300 g', 'Plums 500 g', 'Peaches 4 pcs', 'Limes 4 pcs', 'Passion Fruit 3 pcs',
     ],
-    [
-        'sku' => 'TZ-SALE-001',
-        'name' => 'Tracezilla Test Pineapple',
-        'regular_price' => '40.00',
-        'sale_price' => '32.00',
-        'manage_stock' => true,
-        'stock_quantity' => 50,
+    'VEG' => [
+        'Carrots 1 kg', 'Organic Potatoes 2 kg', 'Yellow Onions 1 kg', 'Garlic 3 pcs', 'Cherry Tomatoes 250 g',
+        'Cucumber', 'Red Bell Pepper', 'Broccoli 400 g', 'Cauliflower', 'Iceberg Lettuce',
+        'Baby Spinach 150 g', 'Leeks 500 g', 'Sweet Potatoes 1 kg', 'Courgette', 'Aubergine',
+        'Mushrooms 250 g', 'Green Beans 300 g', 'Beetroot 1 kg', 'Kale 200 g', 'Celeriac',
     ],
-    [
-        'sku' => 'TZ-OUT-OF-STOCK',
-        'name' => 'Tracezilla Test Mango',
-        'regular_price' => '30.00',
-        'manage_stock' => true,
-        'stock_quantity' => 0,
+    'DAIRY' => [
+        'Aged Gouda 500 g', 'Organic Whole Milk 1 L', 'Skimmed Milk 1 L', 'Greek Yoghurt 1 kg', 'Salted Butter 250 g',
+        'Crème Fraîche 200 ml', 'Whipping Cream 250 ml', 'Mature Cheddar 400 g', 'Danish Blue Cheese 150 g', 'Feta 200 g',
+        'Mozzarella 125 g', 'Cottage Cheese 250 g', 'Vanilla Skyr 450 g', 'Brie 200 g', 'Parmesan 150 g',
+        'Buttermilk 1 L', 'Chocolate Milk 500 ml', 'Free-range Eggs 10 pcs', 'Cream Cheese 200 g', 'Oat Drink 1 L',
+    ],
+    'BAKERY' => [
+        'Sourdough Rye Bread 750 g', 'White Sandwich Loaf 500 g', 'Wholegrain Rolls 6 pcs', 'Croissants 4 pcs', 'Cinnamon Swirls 4 pcs',
+        'Baguette', 'Seeded Crispbread 250 g', 'Spelt Bread 600 g', 'Danish Pastry 2 pcs', 'Pita Bread 6 pcs',
+        'Tortilla Wraps 8 pcs', 'Bagels 4 pcs', 'Brioche Buns 4 pcs', 'Ciabatta', 'Rye Crackers 200 g',
+        'Blueberry Muffins 2 pcs', 'Carrot Cake 400 g', 'Butter Cookies 300 g', 'Oat Biscuits 250 g', 'Gluten-free Bread 400 g',
+    ],
+    'MEAT' => [
+        'Minced Beef 500 g', 'Chicken Breast 400 g', 'Pork Tenderloin 500 g', 'Smoked Bacon 150 g', 'Sirloin Steak 250 g',
+        'Chicken Thighs 1 kg', 'Lamb Chops 400 g', 'Pork Sausages 400 g', 'Sliced Ham 100 g', 'Salami 80 g',
+        'Turkey Breast Slices 100 g', 'Liver Pâté 200 g', 'Meatballs 500 g', 'Roast Beef Slices 100 g', 'Chorizo 200 g',
+        'Duck Breast 350 g', 'Beef Burger Patties 4 pcs', 'Pulled Pork 400 g', 'Whole Chicken 1.4 kg', 'Veal Escalope 300 g',
+    ],
+    'FISH' => [
+        'Smoked Salmon Slices 200 g', 'Salmon Fillet 400 g', 'Cod Fillet 400 g', 'Cooked Prawns 250 g', 'Pickled Herring 300 g',
+        'Tuna in Olive Oil 160 g', 'Mackerel in Tomato 125 g', 'Fish Cakes 300 g', 'Fish Fingers 450 g', 'Crab Sticks 250 g',
+        'Smoked Trout 150 g', 'Plaice Fillet 300 g', 'Mussels 1 kg', 'Anchovies 50 g', 'Sardines 120 g',
+        'Hot-smoked Salmon 150 g', 'Haddock Fillet 400 g', 'Lumpfish Roe 100 g', 'Shrimp Salad 200 g', 'Whole Sea Bass 500 g',
+    ],
+    'COFFEE' => [
+        'House Blend Coffee Beans', 'Dark Roast Coffee Beans 1 kg', 'Espresso Beans 500 g', 'Ground Filter Coffee 500 g', 'Decaf Ground Coffee 250 g',
+        'Cold Brew Coffee Beans 500 g', 'Colombian Single Origin 250 g', 'Ethiopian Yirgacheffe 250 g', 'Instant Coffee 100 g', 'Coffee Pods 10 pcs',
+        'Cappuccino Sachets 8 pcs', 'Organic Medium Roast 500 g', 'Brazil Santos Beans 1 kg', 'Guatemala Antigua 250 g', 'Kenya AA Beans 250 g',
+        'Mocha Blend Ground 400 g', 'Swedish Light Roast 450 g', 'Iced Coffee 250 ml', 'Vanilla Coffee Syrup 250 ml', 'Cocoa Powder 250 g',
+    ],
+    'TEA' => [
+        'English Breakfast Tea 50 bags', 'Earl Grey 100 g', 'Sencha Green Tea 100 g', 'Chamomile Tea 20 bags', 'Peppermint Tea 20 bags',
+        'Rooibos 100 g', 'Jasmine Green Tea 50 g', 'Chai Spice Tea 20 bags', 'Lemon Ginger Tea 20 bags', 'Darjeeling 100 g',
+        'Matcha Powder 30 g', 'Oolong 50 g', 'Hibiscus Berry Tea 20 bags', 'Lapsang Souchong 50 g', 'White Tea 30 g',
+        'Assam Loose Leaf 125 g', 'Fruit Tea Mix 40 bags', 'Peach Iced Tea 1 L', 'Licorice Tea 20 bags', 'Nettle Tea 20 bags',
+    ],
+    'PANTRY' => [
+        'Tomato Basil Sauce 500 g', 'Extra Virgin Olive Oil 500 ml', 'Spaghetti 500 g', 'Basmati Rice 1 kg', 'Rolled Oats 1 kg',
+        'Honey Almond Granola 500 g', 'Wildflower Honey 350 g', 'Strawberry Jam 400 g', 'Peanut Butter 350 g', 'Chickpeas 400 g',
+        'Red Lentils 500 g', 'Wheat Flour 2 kg', 'Cane Sugar 1 kg', 'Sea Salt 500 g', 'Black Pepper 50 g',
+        'Balsamic Vinegar 250 ml', 'Dijon Mustard 200 g', 'Coconut Milk 400 ml', 'Chopped Tomatoes 400 g', 'Vegetable Stock 500 ml',
+    ],
+    'SNACK' => [
+        'Sea Salt Crisps 150 g', 'Salted Peanuts 200 g', 'Dark Chocolate 70% 100 g', 'Milk Chocolate 100 g', 'Trail Mix 250 g',
+        'Popcorn 90 g', 'Licorice 150 g', 'Wine Gums 200 g', 'Rice Cakes 130 g', 'Protein Bar 60 g',
+        'Dried Apricots 200 g', 'Raisins 250 g', 'Roasted Almonds 150 g', 'Cashews 150 g', 'Pretzels 175 g',
+        'Tortilla Chips 200 g', 'Oat Bars 6 pcs', 'Marzipan Bar 50 g', 'Fruit Leather 5 pcs', 'Vegetable Crisps 100 g',
     ],
 ];
 
+// Products that represent specific integration test cases.
+$overrides = [
+    'TZ-FRUIT-001' => ['regular_price' => '25.00', 'stock_quantity' => 100],
+    'TZ-FRUIT-002' => ['regular_price' => '40.00', 'sale_price' => '32.00', 'stock_quantity' => 50],
+    'TZ-FRUIT-003' => ['regular_price' => '30.00', 'stock_quantity' => 0],
+];
+$variableSku = 'TZ-COFFEE-001';
+
 $seeded = [];
-foreach ($simpleProducts as $fixture) {
-    $seeded[] = $fixture['sku'].' (#'.seed_simple_product($fixture).')';
+$number = 0;
+foreach ($catalog as $category => $names) {
+    foreach ($names as $index => $name) {
+        $number++;
+        $sku = sprintf('TZ-%s-%03d', $category, $index + 1);
+        if ($sku === $variableSku) {
+            continue;
+        }
+        $seeded[$sku] = seed_simple_product(array_merge([
+            'sku' => $sku,
+            'name' => $name,
+            'regular_price' => number_format(10 + ($number % 90), 2, '.', ''),
+            'manage_stock' => true,
+            'stock_quantity' => 20 + ($number % 181),
+        ], $overrides[$sku] ?? []));
+    }
 }
 
-// Together with the three products above and the variable parent below, these
-// fixtures produce exactly 200 top-level products. Variations are not counted.
-for ($number = 1; $number <= 196; $number++) {
-    $sku = sprintf('TZ-CATALOG-%03d', $number);
-    $seeded[] = $sku.' (#'.seed_simple_product([
-        'sku' => $sku,
-        'name' => sprintf('Tracezilla Catalog Product %03d', $number),
-        'regular_price' => number_format(10 + ($number % 90), 2, '.', ''),
-        'manage_stock' => true,
-        'stock_quantity' => 20 + ($number % 181),
-    ]).')';
+$coffee = seed_variable_parent($variableSku, $catalog['COFFEE'][0], ['250 g', '1 kg']);
+$seeded[$variableSku] = $coffee->get_id();
+seed_variation($coffee, 'TZ-COFFEE-001-250G', '250 g', '45.00', 20);
+seed_variation($coffee, 'TZ-COFFEE-001-1KG', '1 kg', '150.00', 15);
+
+WC_Product_Variable::sync($coffee, true);
+wc_delete_product_transients($coffee->get_id());
+
+// Remove TZ- products that are no longer part of the catalog, e.g. after a
+// fixture rename, so re-running the seeder restores exactly this catalog.
+$removed = 0;
+foreach (wc_get_products(['limit' => -1, 'type' => ['simple', 'variable'], 'status' => 'any']) as $product) {
+    if (str_starts_with($product->get_sku(), 'TZ-') && ! isset($seeded[$product->get_sku()])) {
+        $product->delete(true);
+        $removed++;
+    }
 }
-
-$shirt = seed_variable_parent('TZ-TSHIRT', 'Tracezilla Test T-shirt', ['Small', 'Medium']);
-$seeded[] = 'TZ-TSHIRT (#'.$shirt->get_id().')';
-$seeded[] = 'TZ-TSHIRT-S (#'.seed_variation($shirt, 'TZ-TSHIRT-S', 'Small', '20.00', 20).')';
-$seeded[] = 'TZ-TSHIRT-M (#'.seed_variation($shirt, 'TZ-TSHIRT-M', 'Medium', '20.00', 15).')';
-
-WC_Product_Variable::sync($shirt, true);
-wc_delete_product_transients($shirt->get_id());
 
 $customerFixtures = [
     ['email' => 'anna@example.test', 'first_name' => 'Anna', 'last_name' => 'Andersen', 'city' => 'Copenhagen', 'country' => 'DK'],
@@ -274,23 +334,24 @@ foreach ($customerFixtures as $fixture) {
 
 $orders = [
     seed_order('TZ-ORDER-001', $customers['anna@example.test'], 'processing', 0, [
-        ['sku' => 'TZ-SIMPLE-001', 'quantity' => 2],
-        ['sku' => 'TZ-TSHIRT-S', 'quantity' => 1],
+        ['sku' => 'TZ-FRUIT-001', 'quantity' => 2],
+        ['sku' => 'TZ-COFFEE-001-250G', 'quantity' => 1],
     ]),
     seed_order('TZ-ORDER-002', $customers['ben@example.test'], 'completed', 1, [
-        ['sku' => 'TZ-SALE-001', 'quantity' => 3],
-        ['sku' => 'TZ-CATALOG-001', 'quantity' => 1],
+        ['sku' => 'TZ-FRUIT-002', 'quantity' => 3],
+        ['sku' => 'TZ-DAIRY-001', 'quantity' => 1],
     ]),
     seed_order('TZ-ORDER-003', $customers['carla@example.test'], 'on-hold', 2, [
-        ['sku' => 'TZ-TSHIRT-M', 'quantity' => 2],
-        ['sku' => 'TZ-CATALOG-002', 'quantity' => 4],
+        ['sku' => 'TZ-COFFEE-001-1KG', 'quantity' => 2],
+        ['sku' => 'TZ-DAIRY-002', 'quantity' => 4],
     ]),
 ];
 
 echo sprintf(
-    "Seeded WooCommerce sandbox: %d top-level products, %d variations, %d customers, and %d orders.\n",
-    200,
-    2,
+    "Seeded WooCommerce sandbox: %d top-level products, %d variations, %d customers, and %d orders. Removed %d obsolete products.\n",
+    count($seeded),
+    count(wc_get_product($coffee->get_id())->get_children()),
     count($customers),
     count($orders),
+    $removed,
 );
