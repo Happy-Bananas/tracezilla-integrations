@@ -15,7 +15,18 @@ until wp core is-installed --path=/var/www/html 2>/dev/null; do
     sleep 2
 done
 
-wp plugin install woocommerce --activate --path=/var/www/html
+# The WordPress image only copies core files into an empty volume, so upgrade
+# existing installations to the pinned version explicitly.
+if [ "$(wp core version --path=/var/www/html)" != "$WORDPRESS_VERSION" ]; then
+    wp core update --version="$WORDPRESS_VERSION" --force --path=/var/www/html
+    wp core update-db --path=/var/www/html
+fi
+
+if [ "$(wp plugin get woocommerce --field=version --path=/var/www/html 2>/dev/null)" != "$WOOCOMMERCE_VERSION" ]; then
+    wp plugin install woocommerce --version="$WOOCOMMERCE_VERSION" --force --path=/var/www/html
+fi
+wp plugin activate woocommerce --path=/var/www/html
+wp wc update --path=/var/www/html
 wp option update woocommerce_onboarding_profile '{"skipped":true}' --format=json --path=/var/www/html
 wp eval-file /seed-products.php --path=/var/www/html
 
