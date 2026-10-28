@@ -211,7 +211,7 @@ function seed_order(
 
 // Ten food categories of twenty products each give exactly 200 top-level
 // products. SKUs are TZ-<CATEGORY>-<NNN> and must match the tracezilla seed in
-// tracezilla-woocommerce-php/seeds/woocommerce-sandbox.yaml.
+// tracezilla-woocommerce-php/seeds/tracezilla.yaml.
 $catalog = [
     'FRUIT' => [
         'Fairtrade Bananas 1 kg', 'Golden Pineapple', 'Ripe Mango', 'Red Apples 1 kg', 'Conference Pears 1 kg',
