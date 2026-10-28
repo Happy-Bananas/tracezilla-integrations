@@ -61,7 +61,7 @@ require a separate UI or custom client application.
 
 Examples include:
 
-- `tracezilla-integration-php`
+- `tracezilla-shopify-php`
 - `tracezilla-shopify-typescript`
 - `tracezilla-shopify-python`
 - `tracezilla-shopify-ruby`
@@ -84,7 +84,7 @@ The initial target under the Happy Bananas GitHub organization is:
 Happy-Bananas/
 ├── tracezilla-integrations
 ├── tracezilla-integrations-docs
-├── tracezilla-integration-php
+├── tracezilla-shopify-php
 ├── tracezilla-shopify-typescript
 ├── tracezilla-shopify-python
 ├── tracezilla-shopify-ruby
@@ -118,7 +118,7 @@ Shared products use purpose-based names:
 
 ```text
 tracezilla-integrations-docs
-tracezilla-integration-php
+tracezilla-shopify-php
 ```
 
 Names use lowercase words separated by hyphens. Official product spelling is
@@ -298,7 +298,7 @@ The current `tracezilla-shopify-connector` repository contains a tested
 Laravel Shopify implementation, general documentation, and smaller TypeScript
 and Python examples.
 
-Its PHP behavior is a reference source for `tracezilla-integration-php`, but the
+Its PHP behavior is a reference source for `tracezilla-shopify-php`, but the
 new implementation is framework-neutral rather than a copy of the Laravel
 application. General documentation moves to the documentation hub. TypeScript
 and Python examples move to their respective focused repositories. The Laravel

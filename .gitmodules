@@ -1,8 +1,8 @@
 [submodule "tracezilla-integrations-docs"]
 	path = tracezilla-integrations-docs
 	url = https://github.com/Happy-Bananas/tracezilla-integrations-docs.git
-[submodule "tracezilla-integration-php"]
-	path = tracezilla-integration-php
+[submodule "tracezilla-shopify-php"]
+	path = tracezilla-shopify-php
 	url = https://github.com/Happy-Bananas/tracezilla-shopify-php.git
 [submodule "tracezilla-woocommerce-php"]
 	path = tracezilla-woocommerce-php
