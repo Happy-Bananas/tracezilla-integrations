@@ -28,7 +28,7 @@ git submodule update --init --recursive
 |---|---|---|
 | `SDD/` | Program-level architecture and operational strategy | Active, local planning material |
 | `tracezilla-integrations-docs/` | Service-first Jekyll documentation hub | Published and maintained |
-| `tracezilla-integration-php/` | BifrostConnect PHP application | Primary customer deployment; Shopify adapter available |
+| `tracezilla-shopify-php/` | BifrostConnect PHP application | Primary customer deployment; Shopify adapter available |
 | `tracezilla-woocommerce-php/` | Deployable WooCommerce/PHP console integration | Connection test available; workflows in progress |
 | `tracezilla-woocommerce-sandbox/` | Disposable WordPress/WooCommerce development store | Seeded sandbox available |
 
@@ -62,7 +62,7 @@ The frozen legacy source remains separately at:
 When a child repository has been pushed, record its new revision here:
 
 ```bash
-git add tracezilla-integration-php
+git add tracezilla-shopify-php
 git commit -m "Update BifrostConnect revision"
 git push
 ```
@@ -81,7 +81,7 @@ Open <http://localhost:4000/>.
 BifrostConnect:
 
 ```bash
-cd tracezilla-integration-php
+cd tracezilla-shopify-php
 docker compose up --build
 ```
 
