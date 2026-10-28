@@ -304,15 +304,32 @@ foreach ($catalog as $category => $names) {
 
 $coffee = seed_variable_parent($variableSku, $catalog['COFFEE'][0], ['250 g', '1 kg']);
 $seeded[$variableSku] = $coffee->get_id();
-seed_variation($coffee, 'TZ-COFFEE-001-250G', '250 g', '45.00', 20);
-seed_variation($coffee, 'TZ-COFFEE-001-1KG', '1 kg', '150.00', 15);
+$variations = [
+    'TZ-COFFEE-001-01' => seed_variation($coffee, 'TZ-COFFEE-001-01', '250 g', '45.00', 20),
+    'TZ-COFFEE-001-02' => seed_variation($coffee, 'TZ-COFFEE-001-02', '1 kg', '150.00', 15),
+];
 
 WC_Product_Variable::sync($coffee, true);
 wc_delete_product_transients($coffee->get_id());
 
+// tracezilla rejects SKU codes longer than 17 characters.
+foreach (array_merge(array_keys($seeded), array_keys($variations)) as $sku) {
+    if (strlen($sku) > 17) {
+        throw new RuntimeException("SKU {$sku} is longer than the 17 characters tracezilla allows.");
+    }
+}
+
 // Remove TZ- products that are no longer part of the catalog, e.g. after a
 // fixture rename, so re-running the seeder restores exactly this catalog.
 $removed = 0;
+foreach (wc_get_product($coffee->get_id())->get_children() as $childId) {
+    $child = wc_get_product($childId);
+    if ($child instanceof WC_Product_Variation && ! isset($variations[$child->get_sku()])) {
+        $child->delete(true);
+        $removed++;
+        WC_Product_Variable::sync($coffee->get_id());
+    }
+}
 foreach (wc_get_products(['limit' => -1, 'type' => ['simple', 'variable'], 'status' => 'any']) as $product) {
     if (str_starts_with($product->get_sku(), 'TZ-') && ! isset($seeded[$product->get_sku()])) {
         $product->delete(true);
@@ -335,14 +352,14 @@ foreach ($customerFixtures as $fixture) {
 $orders = [
     seed_order('TZ-ORDER-001', $customers['anna@example.test'], 'processing', 0, [
         ['sku' => 'TZ-FRUIT-001', 'quantity' => 2],
-        ['sku' => 'TZ-COFFEE-001-250G', 'quantity' => 1],
+        ['sku' => 'TZ-COFFEE-001-01', 'quantity' => 1],
     ]),
     seed_order('TZ-ORDER-002', $customers['ben@example.test'], 'completed', 1, [
         ['sku' => 'TZ-FRUIT-002', 'quantity' => 3],
         ['sku' => 'TZ-DAIRY-001', 'quantity' => 1],
     ]),
     seed_order('TZ-ORDER-003', $customers['carla@example.test'], 'on-hold', 2, [
-        ['sku' => 'TZ-COFFEE-001-1KG', 'quantity' => 2],
+        ['sku' => 'TZ-COFFEE-001-02', 'quantity' => 2],
         ['sku' => 'TZ-DAIRY-002', 'quantity' => 4],
     ]),
 ];
@@ -350,7 +367,7 @@ $orders = [
 echo sprintf(
     "Seeded WooCommerce sandbox: %d top-level products, %d variations, %d customers, and %d orders. Removed %d obsolete products.\n",
     count($seeded),
-    count(wc_get_product($coffee->get_id())->get_children()),
+    count($variations),
     count($customers),
     count($orders),
     $removed,
