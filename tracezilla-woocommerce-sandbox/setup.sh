@@ -8,7 +8,7 @@ until wp core is-installed --path=/var/www/html 2>/dev/null; do
             --url=http://localhost:8080 \
             --title="Tracezilla WooCommerce Sandbox" \
             --admin_user=admin \
-            --admin_password=tracezilla \
+            --admin_password=admin \
             --admin_email=developer@example.com \
             --skip-email && break
     fi
@@ -27,8 +27,14 @@ if [ "$(wp plugin get woocommerce --field=version --path=/var/www/html 2>/dev/nu
 fi
 wp plugin activate woocommerce --path=/var/www/html
 wp wc update --path=/var/www/html
+# Pretty permalinks, as on real stores, so the REST API is at /wp-json/.
+wp rewrite structure '/%postname%/' --hard --path=/var/www/html
 wp option update woocommerce_onboarding_profile '{"skipped":true}' --format=json --path=/var/www/html
 wp eval-file /seed-products.php --path=/var/www/html
 
+# Well-known local credentials, also applied to existing installations.
+wp user update admin --user_pass=admin --skip-email --path=/var/www/html
+wp eval-file /seed-api-key.php --path=/var/www/html
+
 echo "WooCommerce sandbox is ready at http://localhost:8080"
-echo "WordPress login: admin / tracezilla"
+echo "WordPress login: admin / admin"

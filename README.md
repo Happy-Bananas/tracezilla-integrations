@@ -29,7 +29,7 @@ git submodule update --init --recursive
 | `SDD/` | Program-level architecture and operational strategy | Active, local planning material |
 | `tracezilla-integrations-docs/` | Service-first Jekyll documentation hub | Published and maintained |
 | `tracezilla-shopify-php/` | BifrostConnect PHP application | Primary customer deployment; Shopify adapter available |
-| `tracezilla-woocommerce-php/` | Deployable WooCommerce/PHP console integration | Connection test available; workflows in progress |
+| `tracezilla-woocommerce-php/` | Deployable WooCommerce/PHP console integration | Connection check and tracezilla seed available; workflows in progress |
 | `tracezilla-woocommerce-sandbox/` | Disposable WordPress/WooCommerce development store | Seeded sandbox available |
 
 Planned repositories are created only when working, tested content is ready.
@@ -99,7 +99,8 @@ cd tracezilla-woocommerce-sandbox
 docker compose up -d
 ```
 
-Open <http://localhost:8080/wp-admin>.
+Open <http://localhost:8080/wp-admin> and sign in with `admin` / `admin`. The
+REST API key `ck_sandbox` / `cs_sandbox` is preinstalled.
 
 ## Planning documents
 
