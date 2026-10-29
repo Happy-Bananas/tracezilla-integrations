@@ -7,7 +7,7 @@ Last updated: 2026-08-11
 ## 1. Purpose
 
 The tracezilla integration ecosystem provides practical examples, templates,
-and supporting tools for consultants who integrate external commerce services
+and supporting tools for consultants who integrate external services
 with the tracezilla API.
 
 The material must cover common integration scenarios while remaining explicit
@@ -55,7 +55,7 @@ implementation platform. A consultant downloads only the relevant code and
 dependencies.
 
 The primary deployment is BifrostConnect. It communicates
-directly with the external commerce service and tracezilla, runs manually or
+directly with the external service and tracezilla, runs manually or
 under a scheduler, and contains customer-specific business rules. It does not
 require a separate UI or custom client application.
 
