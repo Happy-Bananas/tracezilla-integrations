@@ -1,6 +1,6 @@
-# Keep the original Compose project name so an existing development database
-# remains available after moving the sandbox out of tracezilla-woocommerce-php.
-name: tracezilla-woocommerce-php
+# A fixed name, so the sandbox keeps its containers and database whatever its
+# folder is called, and never shares a Compose project with an integration.
+name: tracezilla-woocommerce-sandbox
 
 services:
   database:
