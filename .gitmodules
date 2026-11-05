@@ -7,3 +7,6 @@
 [submodule "tracezilla-woocommerce-php"]
 	path = tracezilla-woocommerce-php
 	url = https://github.com/Happy-Bananas/tracezilla-woocommerce-php.git
+[submodule "bifrost-core"]
+	path = bifrost-core
+	url = https://github.com/Happy-Bananas/bifrost-core.git
