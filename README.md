@@ -27,6 +27,7 @@ git submodule update --init --recursive
 | Directory | Purpose | Status |
 |---|---|---|
 | `SDD/` | Program-level architecture and operational strategy | Active, local planning material |
+| `bifrost-core/` | Shared PHP core that every integration requires through Composer (`happy-bananas/bifrost-core`) | Released; WooCommerce uses it, Shopify follows |
 | `tracezilla-integrations-docs/` | Service-first Jekyll documentation hub | Published and maintained |
 | `tracezilla-shopify-php/` | BifrostConnect PHP application | Primary customer deployment; Shopify adapter available |
 | `tracezilla-woocommerce-php/` | Deployable WooCommerce/PHP console integration | Connection check and tracezilla seed available; workflows in progress |
