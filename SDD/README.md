@@ -2,7 +2,7 @@
 
 Status: Draft for review
 Owners: Happy Bananas
-Last updated: 2026-08-11
+Last updated: 2026-11-10
 
 This directory contains the long-term design and delivery strategy for the
 tracezilla integration ecosystem.
@@ -18,9 +18,7 @@ is gained.
 
 ## Document status
 
-These files are intentionally excluded by the repository `.gitignore`. They
-are local planning documents until the owners decide where architectural
-records should be version-controlled.
+These files are version-controlled in the umbrella repository.
 
 No new GitHub repository is created merely because it appears in these
 documents. Repository creation is an explicit owner checkpoint in the
