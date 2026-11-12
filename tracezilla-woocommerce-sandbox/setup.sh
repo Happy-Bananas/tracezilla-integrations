@@ -30,6 +30,8 @@ wp wc update --path=/var/www/html
 # Pretty permalinks, as on real stores, so the REST API is at /wp-json/.
 wp rewrite structure '/%postname%/' --hard --path=/var/www/html
 wp option update woocommerce_onboarding_profile '{"skipped":true}' --format=json --path=/var/www/html
+# New stores start in "coming soon" mode, which hides the shop from visitors.
+wp option update woocommerce_coming_soon no --path=/var/www/html
 wp eval-file /seed-products.php --path=/var/www/html
 
 # Well-known local credentials, also applied to existing installations.
