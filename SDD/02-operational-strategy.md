@@ -39,9 +39,9 @@ Git, the pull requests of each repository, and the changelogs.
 
 | Part | State |
 |---|---|
-| bifrost-core | `v0.6.0` |
-| WooCommerce template | `v0.1.0`: connection check, login, scenarios (`confirm-credentials`, `compare-catalogs`, `missing-in-woocommerce`, `create-tracezilla-skus`), seed |
-| Shopify template | `v0.1.0`: all commands ported from the legacy connector, including the order import with its retry queue, plus scenarios and seed |
+| bifrost-core | `v0.7.0`: tracezilla client with automatic login, run lock, seed |
+| WooCommerce template | `v0.2.0`: connection check, login, scenarios (`confirm-credentials`, `compare-catalogs`, `missing-in-woocommerce`, `create-tracezilla-skus`), seed |
+| Shopify template | `v0.3.0`: all commands ported from the legacy connector, including the order import with its retry queue, plus scenarios, seed, and a connection check of both services |
 | Manual | Published; Getting Started, setup per platform, deployment with cron and monitoring, Update Your Integration |
 
 ## 1. More WooCommerce scenario templates
@@ -63,7 +63,6 @@ Add, one at a time, each with tests, a sandbox check and a manual page:
   (`SynchronizeInventory`, `SynchronizeInventoryResult`,
   `TracezillaInventoryService`, `FileRetryRepository`,
   `TracezillaSalesOrderService`).
-- Remove the legacy `create-shopify-project` wrapper.
 
 ## 3. Releases
 
